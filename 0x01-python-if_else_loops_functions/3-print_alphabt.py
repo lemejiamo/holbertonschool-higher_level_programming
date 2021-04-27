@@ -1,8 +1,4 @@
 #!/usr/bin/python3
 for i in range(97, 123):
-    if i == 113:
-        print(end='')
-    elif i == 101:
-        print(end='')
-    else:
+    if i != 113 and i != 101:
         print("{:c}".format(i), end='')
