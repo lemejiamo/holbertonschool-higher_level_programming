@@ -12,3 +12,4 @@ elif mod > 5:
     print(str .format(number, mod, 'is greater than 5'))
 elif mod < 6:
     print(str .format(number, mod, 'is less than 6 and not 0'))
+   
