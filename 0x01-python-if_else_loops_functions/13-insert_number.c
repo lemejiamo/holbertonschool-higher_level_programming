@@ -10,13 +10,11 @@
  */
 listint_t *insert_node(listint_t **head, int number)
 {
+	listint_t *current = NULL, *new_node = NULL, *past_node = NULL;
+	
 	/* verify if data is valid */
 	if (head == NULL)
 		return (NULL);
-
-	listint_t *current = NULL;
-	listint_t *new_node = NULL;
-	listint_t *past_node = NULL;
 
 	new_node = malloc(sizeof(listint_t));
 	if (new_node == NULL)
