@@ -8,5 +8,4 @@ def uppercase(str):
             c = c - 32
         print("{:c}".format(c), end='')
         i += 1
-
-    print("\n")
+    print()
