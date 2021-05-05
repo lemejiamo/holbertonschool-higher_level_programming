@@ -1,11 +1,11 @@
 #!/usr/bin/python3
 def new_in_list(my_list, idx, element):
     if (idx < 0):
-        return
+        return my_list
     if (len(my_list) - 1) < idx:
-        return
+        return my_list
     if not my_list:
-        return
+        return 
     # create a empty list
     copy_list = []
     # add the elemtes from my_list to empty list
