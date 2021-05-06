@@ -9,5 +9,3 @@ def no_c(my_string):
             new_string = my_string[:i] + my_string[i+1:]
             return new_string
         i += 1
-
-    return my_string
