@@ -5,4 +5,5 @@ class Square():
     """void function
         no argument requierd
     """
-    pass
+    def funtion(self):
+        pass
