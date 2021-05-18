@@ -2,4 +2,7 @@
 
 
 class Square():
+    """void function
+        no argument requierd
+    """
     pass
