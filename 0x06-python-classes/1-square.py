@@ -1,7 +1,4 @@
 #!/usr/bin/python3
-"""Square with size
-    that define size of square
-"""
 
 
 class Square():
