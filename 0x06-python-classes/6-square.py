@@ -47,9 +47,14 @@ class Square():
         return self.area
 
     def my_print(self):
-        a = b = 0
+        new_lines = spaces = 0
         if self.position != 0:
-            a, b = self.position[1], self.position[0]
+            new_lines, spaces = self.position[1], self.position[0]
+
+        j = 0
+        while j < new_lines:
+            print()
+            j += 1
 
         if self.size == 0:
             print()
@@ -57,7 +62,7 @@ class Square():
             for i in range(self.size):
                 j = k = 0
                 while k < self.size:
-                    while j < b:
+                    while j < spaces:
                         print(' ', end="")
                         j += 1
                     print("#", end="")
