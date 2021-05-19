@@ -55,13 +55,15 @@ class Square():
         if self.position != 0:
                 new_lines, spaces = self.position[1], self.position[0]
 
+        if self.size == 0:
+            print()
+            return
+
         j = 0
         while j < new_lines:
             print()
             j += 1
 
-        if self.size == 0:
-            print()
         else:
             for i in range(self.size):
                 j = k = 0
