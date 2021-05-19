@@ -36,12 +36,12 @@ class Square():
         return self.area
 
     def my_print(self):
-        #if self.size == 0:
-        #   print()
-
-        for i in range(self.size):
-            i = 0
-            while i < self.size:
-                print("#", end="")
-                i += 1
+        if self.size == 0:
             print()
+        else:
+            for i in range(self.size):
+                i = 0
+                while i < self.size:
+                    print("#", end="")
+                    i += 1
+                print()
