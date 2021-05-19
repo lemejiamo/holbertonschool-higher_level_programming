@@ -4,9 +4,12 @@
 class Square():
     """Class square define a square
 
-        __init__ initialization of private instance
+       __init__ initialization of private instance
     """
     def __init__(self, size=0):
+        """ constructor
+            to create a square
+        """
         self.__size = size
         if type(size) != int:
             raise TypeError("size must be an integer")
