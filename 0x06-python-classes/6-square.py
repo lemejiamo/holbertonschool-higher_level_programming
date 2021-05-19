@@ -51,11 +51,6 @@ class Square():
         if self.position != 0:
             a, b = self.position[1], self.position[0]
 
-        j = 0
-        while j < a:
-            print(a)
-            j += 1
-
         if self.size == 0:
             print()
         else:
