@@ -2,13 +2,11 @@
 
 
 class Square():
-    """Class square
-       Define class square
+    """Class square define a square
+
+        __init__ initialization of private instance
     """
     def __init__(self, size=0):
-        """This function pass size
-            as attribute and validate it
-        """
         self.__size = size
         if type(size) != int:
             raise TypeError("size must be an integer")
