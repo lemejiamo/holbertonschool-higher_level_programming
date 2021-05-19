@@ -47,17 +47,20 @@ class Square():
         return self.area
 
     def my_print(self):
-        if type(self.position) != tuple:
-            raise TypeError("position must be a tuple of 2 positive integers")
-
         if self.size == 0:
             print()
             return
+        position = self.position
 
-        if len(self.position) == 2:
-                new_lines, spaces = self.position[1], self.position[0]
-        else:
+        if position[0] < 0 or position[1] < 0:
             raise TypeError("position must be a tuple of 2 positive integers")
+
+        if type(position) != tuple or len(position) != 2 or type(position[0]) != int or type(position[1]) != int:
+            raise TypeError("position must be a tuple of 2 positive integers")
+        
+
+        new_lines, spaces = self.position[1], self.position[0]
+       
 
         j = 0
         while j < new_lines:
