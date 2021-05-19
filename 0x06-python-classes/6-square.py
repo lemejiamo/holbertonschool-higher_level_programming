@@ -10,7 +10,7 @@ class Square():
 
        __init__ initialization of private instance
     """
-    def __init__(self, size=0, position=0):
+    def __init__(self, size=0, position=(0, 0)):
         """ constructor
             to create a square
         """
@@ -48,8 +48,11 @@ class Square():
 
     def my_print(self):
         new_lines = spaces = 0
+        if type(self.position) != tuple:
+            raise TypeError("position must be a tuple of 2 positive integers")
+
         if self.position != 0:
-            new_lines, spaces = self.position[1], self.position[0]
+                new_lines, spaces = self.position[1], self.position[0]
 
         j = 0
         while j < new_lines:
