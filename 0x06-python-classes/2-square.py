@@ -1,5 +1,8 @@
 #!/usr/bin/python3
-
+"""Square 
+    Learning attributes works into a classes
+    and objects
+"""
 
 class Square():
     """Class square define a square
