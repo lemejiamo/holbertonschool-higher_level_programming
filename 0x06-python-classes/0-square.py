@@ -3,6 +3,7 @@
     Define Class square
 """
 
+
 class Square():
     """void function
         no argument requierd
