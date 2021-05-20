@@ -2,6 +2,6 @@
 """ this is a empty class"""
 
 
-class rectangle:
+class Rectangle:
     """ empty class rectangle """
     pass
