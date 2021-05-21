@@ -67,9 +67,7 @@ class Rectangle:
 
     def __repr__(self):
 
-        len_width = self.__width
-        len_height = self.__height
-        len_width = str(len_width)
-        len_height = str(len_height)
+        len_width = str(self.__width)
+        len_height = str(self.__height)
         rectan_dimen = "Rectangle(" + len_width + ", " + len_height + ")"
         return rectan_dimen
