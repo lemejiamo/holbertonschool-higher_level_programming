@@ -72,6 +72,6 @@ class Rectangle:
         len_height = str(self.__height)
         rectan_dimen = "Rectangle(" + len_width + ", " + len_height + ")"
         return rectan_dimen
-    
+
     def __del__(self):
         print("Bye rectangle...")
