@@ -61,5 +61,4 @@ class Rectangle:
                 k += 1
             rectangle += '\n'
 
-        rectangle = str(rectangle)
         return rectangle
