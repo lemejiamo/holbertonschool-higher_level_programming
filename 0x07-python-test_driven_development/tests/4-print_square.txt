@@ -1,0 +1,32 @@
+# test file to function print_square
+
+>>> print_square = __import__('4-print_square').print_square
+
+# 0 ideal conditions
+>>> print_square(4)
+####
+####
+####
+####
+
+# 1 negative number
+>>> print_square(-4)
+Traceback (most recent call last):
+    ...
+ValueError: size must be >= 0
+
+# 2 value is a string
+>>> print_square("a")
+Traceback (most recent call last):
+    ...
+TypeError: size must be an integer
+
+# 3 size is equal to 0 zero
+>>> print_square(0)
+
+
+# 4 is size is float
+>>> print_square(1.1)
+Traceback (most recent call last):
+    ...
+TypeError: size must be an integer
