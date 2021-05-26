@@ -1,0 +1,38 @@
+#test file for a function add_integer
+
+>>> test_add_integer = __import__('0-add_integer').add_integer
+
+>>> test_add_integer(1, 1)
+2
+
+# 1. validation type data
+>>> test_add_integer('Hola', 1)
+Traceback (most recent call last):
+    ...
+TypeError: a must be an integer
+
+# 1.1 validation type data reverse
+>>> test_add_integer(1, 'Hola')
+Traceback (most recent call last):
+    ...
+TypeError: b must be an integer
+
+
+# 1.2 more validation data
+>>> test_add_integer(1ja, 'Hola')
+Traceback (most recent call last):
+    ...
+SyntaxError: invalid syntax
+
+
+# 2 negative add
+>>> test_add_integer(-14, 1)
+-13
+
+# 3 float
+>>> test_add_integer(13.5, 14.5)
+27
+
+# 3.1 long long float
+>>> test_add_integer(13.33333333333333333333, 1.00000000000000000000)
+14
