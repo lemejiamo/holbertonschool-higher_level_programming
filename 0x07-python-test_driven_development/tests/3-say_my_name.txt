@@ -1,0 +1,29 @@
+# test to funtion say my name
+>>> say_my_name =__import__('3-say_my_name').say_my_name
+
+# 0 ideal conditions
+>>> say_my_name("John", "Smith")
+My name is John Smith
+
+#1 one argument bad
+>>> say_my_name("John", 12)
+Traceback (most recent call last):
+...
+TypeError: last_name must be a string
+
+
+# 1.1 one argument bad
+>>> say_my_name(12, "mejia")
+Traceback (most recent call last):
+...
+TypeError: first_name must be a string
+
+# 2 just one argument 
+>>> say_my_name("", "mejia")
+Traceback (most recent call last):
+...
+TypeError: first_name must be a string
+
+# 2.1 just one argument 
+>>> say_my_name("luis", )
+My name is luis 
