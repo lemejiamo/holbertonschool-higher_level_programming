@@ -19,3 +19,6 @@ class TestMaxInteger(unittest.TestCase):
     def test_raise_exceptions(self):
         self.assertRaises(TypeError, max_integer, True)
         self.assertRaises(TypeError, max_integer, ['Holberton', 1, 2, 3])
+        self.assertRaises(TypeError, max_integer, ['Holberton', 1, 2, 3], ['a', 'b', 'c', 'd'])
+
+    
