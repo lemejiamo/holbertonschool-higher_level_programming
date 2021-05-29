@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+    """
+       calculate a square
+    """
 
 
 class Square():
