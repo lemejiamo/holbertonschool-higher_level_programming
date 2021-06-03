@@ -30,3 +30,7 @@ True
 
 >>> issubclass(list, MyList)
 False
+
+>>> numbers = MyList()
+>>> numbers.print_sorted()
+[]
