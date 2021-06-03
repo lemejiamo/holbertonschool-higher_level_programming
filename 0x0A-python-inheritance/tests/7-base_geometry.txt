@@ -3,49 +3,41 @@
 # ===============================================
 
 
-import module:
-       >>> BaseGeometry = __import__("7-base_geometry").BaseGeometry
+>>> BaseGeometry = __import__("7-base_geometry").BaseGeometry
 
-Validate if area:
-       >>> 'area' in dir(BaseGeometry)
-       True
+>>> 'area' in dir(BaseGeometry)
+True
 
-Validate if integer validator:
-       >>> 'integer_validator' in dir(BaseGeometry)
-       True
+>>> 'integer_validator' in dir(BaseGeometry)
+True
 
-Call area exception:
-       >>> f = BaseGeometry()
-       >>> f.area()
-       Traceback (most recent call last):
-       Exception: area() is not implemented
+>>> f = BaseGeometry()
+>>> f.area()
+Traceback (most recent call last):
+Exception: area() is not implemented
 
-Integer validations:
-       >>> f.integer_validator()
-       Traceback (most recent call last):
-       TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+>>> f.integer_validator()
+Traceback (most recent call last):
+TypeError: integer_validator() takes exactly 3 arguments (1 given)
 
-       >>> f.integer_validator(1)
-       Traceback (most recent call last):
-       TypeError: integer_validator() missing 1 required positional argument: 'value'
+>>> f.integer_validator(1)
+Traceback (most recent call last):
+TypeError: integer_validator() takes exactly 3 arguments (2 given)
+
+>>> f.integer_validator(1, 2, 3)
+Traceback (most recent call last):
+TypeError: integer_validator() takes exactly 3 arguments (4 given)
 
 
-       >>> f.integer_validator(1, 2, 3)
-       Traceback (most recent call last):
-       TypeError: integer_validator() takes 3 positional arguments but 4 were given
+>>> f.integer_validator("name", -23)
+Traceback (most recent call last):
+ValueError: name ust be greater than 0
 
-Send negative:
-       >>> f.integer_validator("name", -23)
-       Traceback (most recent call last):
-       ValueError: name must be greater than 0
+>>> f.integer_validator("name", 0)
+Traceback (most recent call last):
+ValueError: name ust be greater than 0
 
-Send zero:
-       >>> f.integer_validator("name", 0)
-       Traceback (most recent call last):
-       ValueError: name must be greater than 0
-
-Correct arguments:
-       >>> f.integer_validator("name", 7)
+>>> f.integer_validator("name", 7)
 
 >>> bg = BaseGeometry()
 
@@ -86,14 +78,14 @@ TypeError: age must be an integer
 ...     bg.integer_validator("age", 0)
 ... except Exception as e:
 ...     print("[{}] {}".format(e.__class__.__name__, e))
-[ValueError] age must be greater than 0
+[ValueError] age ust be greater than 0
 
 
 >>> try:
 ...     bg.integer_validator("distance", -4)
 ... except Exception as e:
 ...     print("[{}] {}".format(e.__class__.__name__, e))
-[ValueError] distance must be greater than 0
+[ValueError] distance ust be greater than 0
 
 
 >>> bg.area()
@@ -102,12 +94,12 @@ Exception: area() is not implemented
 
 >>> bg.integer_validator("age")
 Traceback (most recent call last):
-TypeError: integer_validator() missing 1 required positional argument: 'value'
+TypeError: integer_validator() takes exactly 3 arguments (2 given)
 
 >>> bg.integer_validator()
 Traceback (most recent call last):
-TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+TypeError: integer_validator() takes exactly 3 arguments (1 given)
 
 >>> bg.integer_validator("Hello", 7, 8)
 Traceback (most recent call last):
-TypeError: integer_validator() takes 3 positional arguments but 4 were given
+TypeError: integer_validator() takes exactly 3 arguments (4 given)
