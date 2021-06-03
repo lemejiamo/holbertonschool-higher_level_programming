@@ -1,0 +1,32 @@
+# doctest for 1-my-list.py
+
+>>> MyList = __import__('1-my_list').MyList
+>>> numbers = MyList()
+
+>>> numbers.append(9)
+>>> numbers.append(3)
+>>> numbers.append(5)
+>>> numbers.append(6)
+>>> numbers.append(4)
+>>> numbers.append(4)
+>>> numbers.append(2)
+
+>>> print(numbers)
+[9, 3, 5, 6, 4, 4, 2]
+
+>>> numbers.print_sorted()
+[2, 3, 4, 4, 5, 6, 9]
+
+>>> print(numbers)
+[9, 3, 5, 6, 4, 4, 2]
+
+>>> numbers = MyList(2)
+Traceback (most recent call last):
+...
+TypeError: 'int' object is not iterable
+
+>>> issubclass(MyList, list)
+True
+
+>>> issubclass(list, MyList)
+False
