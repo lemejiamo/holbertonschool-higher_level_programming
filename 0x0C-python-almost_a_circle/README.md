@@ -13,3 +13,9 @@
 * Inheritance
 * Unittest
 * Read/Write file
+
+### You will also learn about:
+
+* args and kwargs
+* Serialization/Deserialization
+* JSON
