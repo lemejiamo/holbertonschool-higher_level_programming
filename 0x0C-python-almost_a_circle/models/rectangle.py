@@ -60,7 +60,7 @@ class Rectangle(Base):
     def area(self):
         """ calculates a area """
 
-        return self.__width * self.__height
+        return self.width * self.height
     # END OF FUNCTION ----------------------------------------------------|
 
     # Function to display Rectangle --------------------------------------|
@@ -93,26 +93,37 @@ class Rectangle(Base):
     # UPDATE RECTANGLE values------ --------------------------------------|
     def update(self, *args, **kwargs):
         """ pendiente la descripcion XD"""
-        
-        fields = ["height", "width", "x", "y", "id"]
+
+        fields = ["size", "height", "width", "x", "y", "id"]
 
         if len(args) != 0:
-        # entry point to *args -------------------------------------------|
-
-            if len(args) == 1:
+            # entry point to *args ---------------------------------------|
+            if len(args) >= 1: # sirve para los dos
                 super().__init__(args[0])
 
-            if len(args) == 2:
-                self.__init__(args[1], self.height, self.x, self.y, args[0])
+            if len(args) >= 2:
 
-            if len(args) == 3:
-                self.__init__(args[1], args[2], self.x, self.y, args[0])
+                if (type(self) == Rectangle):
+                    self.width = args[1]
+                else:
+                    self.size = args[1]
 
-            if len(args) == 4:
-                self.__init__(args[1], args[2], args[3], self.y, args[0])
+            if len(args) >= 3:
+                if (type(self) == Rectangle):
+                    self.height = args[2]
+                else:
+                    self.x = args[2]
+
+            if len(args) >= 4:
+                if (type(self) == Rectangle):
+                    self.x = args[3]
+                else:
+                    self.y = args[3]
 
             if len(args) >= 5:
-                self.__init__(args[1], args[2], args[3], args[4], args[0])
+                if (type(self) == Rectangle):
+                    self.y = args[4]
+                pass
 
         # entry point to **kwargs ----------------------------------------|
         else:
@@ -122,8 +133,7 @@ class Rectangle(Base):
 
     # END OF FUNCTION ----------------------------------------------------|
 
-
-    # set and get *width* Attribute --------------------------------------|
+    # |-------------------- set and get *width* Attribute ----------------|
     @property
     def width(self):
         return (self.__width)
@@ -132,7 +142,7 @@ class Rectangle(Base):
     def width(self, value):
         self.integer_validator("width", value)
         self.__width = value
-    # END OF FUNCTION ----------------------------------------------------|
+    # |-------------------------- END OF FUNCTION ------------------------|
 
     # set and get *height* Attribute -------------------------------------|
     @property
