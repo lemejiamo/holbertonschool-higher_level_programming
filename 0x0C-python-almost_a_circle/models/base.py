@@ -28,20 +28,27 @@ class Base():
             init__.id = id
     # |-------------------------- END OF FUNCTION -------------------------|
 
-    # |------------- STATIC METHOD'S FROM  CLASS RECTANGLE ----------------|
+    # |------------- STATIC METHOD'S FROM  CLASS BASE ---------------------|
     @staticmethod
     def to_json_string(list_dictionaries):
         return json.dumps(list_dictionaries)
     # |-------------------------- END OF FUNCTION -------------------------|
 
 
-    #|-------------- CLASS METHOD'S FROM  CLASS RECTANGLE -----------------|
+    #|-------------- CLASS METHOD'S FROM  CLASS BASE ----------------------|
     @classmethod
     def save_to_file(cls, list_objs):
-        """ agregar descripcion"""
+        """ saves a list of objects into a JSON file
+
+            Attributes:
+            list_objs: list of objects to save in a JSON file
+        """
 
         file = "{}.json".format(cls.__name__)
-        print(file)
-        #with open('rectangle.json', 'w') as file:
-         #   file.write(json.dump(list_objs))
+        list_dictionaries = []
+        for i in list_objs:
+            list_dictionaries.append(cls.to_dictionary(i))
+
+        with open(file, 'w') as file:
+            file.write(json.dumps(list_dictionaries))
     # |-------------------------- END OF FUNCTION -------------------------|
