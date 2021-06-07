@@ -6,13 +6,12 @@ from models.base import Base
 class Rectangle(Base):
     """ Rectangle class inherits from class Base """
 
-    # |------------ Attributes from Rectangle Class ------------------------|
+    # |---------------- Attributes from Rectangle Class -------------------|
 
     print_symbol = '#'
 
-    # |------------ Private Method's from  class Rectangle ----------------|
-
-    # CONSTRUCTOR ---------------------------------------------------------|
+    # |-------------- Private Method from  class Rectangle ----------------|
+    # | --------------------------- CONSTRUCTOR ---------------------------|
     def __init__(self, width, height, x=0, y=0, id=None):
         """
         __init__ (constructor)
@@ -29,9 +28,10 @@ class Rectangle(Base):
         self.height: int = height
         self.x = x
         self.y = y
-    # END OF FUNCTION ----------------------------------------------------|
+    # |------------------------ END OF CONSTRUCTOR ------------------------|
 
-    # Override __str__ method --------------------------------------------|
+    # |-------------- Private Method from  class Rectangle ----------------|
+    # |--------------------- Override __str__ method ----------------------|
     def __str__(self):
         return ("[{}] ({}) {}/{} - {}/{}".format(
                 __class__.__name__,
@@ -40,11 +40,10 @@ class Rectangle(Base):
                 self.y,
                 self.width,
                 self.height))
-    # END OF FUNCTION ----------------------------------------------------|
+    # |------------------------- END OF FUNCTION --------------------------|
 
-    # |------------ PUBLIC METHOD'S FROM  CLASS RECTANGLE ----------------|
-
-    # Function to validate input data ------------------------------------|
+    # |------------- PUBLIC METHOD'S FROM  CLASS RECTANGLE ----------------|
+    # |------------------- Function to validate input data ----------------|
     def integer_validator(self, name, value):
         """ validation of a integer """
 
@@ -54,16 +53,18 @@ class Rectangle(Base):
             if name == "y" or name == "x":
                 raise ValueError("{} must be >= 0".format(name))
             raise ValueError("{} must be > 0".format(name))
-    # END OF FUNCTION ----------------------------------------------------|
+    # |------------------------- END OF FUNCTION --------------------------|
 
-    # Function to calculate the area -------------------------------------|
+    # |------------- PUBLIC METHOD'S FROM  CLASS RECTANGLE ----------------|
+    # |------------------ Function to calculate the area ------------------|
     def area(self):
         """ calculates a area """
 
         return self.width * self.height
-    # END OF FUNCTION ----------------------------------------------------|
+    # |-------------------------- END OF FUNCTION -------------------------|
 
-    # Function to display Rectangle --------------------------------------|
+    # |------------- PUBLIC METHOD'S FROM  CLASS RECTANGLE ----------------|
+    # |------------------- Function to display Rectangle ------------------|
     def display(self):
         """ print a rectangle with # """
 
@@ -72,14 +73,14 @@ class Rectangle(Base):
             return rectangle
         y, x = self.y, self.x
 
-        while y:  # loop to add *y* lines at the begin
+        while y:
             rectangle += '\n'
             y -= 1
 
         for i in range(self.height):
             j = k = 0
             while k < self.width:
-                while j < self.x:  # loop to add x spaces at the begin of str
+                while j < self.x:
                     rectangle += (str(' '))
                     j += 1
                 rectangle += (str(self.print_symbol))
@@ -88,17 +89,18 @@ class Rectangle(Base):
                 rectangle += '\n'
 
         print(rectangle)
-    # END OF FUNCTION ----------------------------------------------------|
+    # |-------------------------- END OF FUNCTION -------------------------|
 
-    # UPDATE RECTANGLE values------ --------------------------------------|
+    # |------------- PUBLIC METHOD'S FROM  CLASS RECTANGLE ----------------|
+    # |---------------------- UPDATE RECTANGLE values ---------------------|
     def update(self, *args, **kwargs):
         """ pendiente la descripcion XD"""
 
         fields = ["size", "height", "width", "x", "y", "id"]
 
         if len(args) != 0:
-            # entry point to *args ---------------------------------------|
-            if len(args) >= 1: # sirve para los dos
+            # entry point to *args ----------------------------------------|
+            if len(args) >= 1:
                 super().__init__(args[0])
 
             if len(args) >= 2:
@@ -125,15 +127,36 @@ class Rectangle(Base):
                     self.y = args[4]
                 pass
 
-        # entry point to **kwargs ----------------------------------------|
+        # entry point to **kwargs -----------------------------------------|
         else:
             for key in kwargs:
                 if key in fields:
                     setattr(self, key, kwargs[key])
 
-    # END OF FUNCTION ----------------------------------------------------|
+    # |-------------------------- END OF FUNCTION -------------------------|
 
-    # |-------------------- set and get *width* Attribute ----------------|
+    # |------------- PUBLIC METHOD'S FROM  CLASS RECTANGLE ----------------|
+    # |--------------------------- print dictionary -----------------------|
+    def to_dictionary(self):
+        if (type(self) == Rectangle):
+            rectangle_dict = {
+                'x': self.x,
+                'y': self.y,
+                'width': self.width,
+                'height': self.height,
+                'id': self.id}
+            return rectangle_dict
+        else:
+            square_dict = {
+                'x': self.x,
+                'y': self.y,
+                'size': self.size,
+                'id': self.id}
+            return square_dict
+    # |-------------------------- END OF FUNCTION -------------------------|
+
+    # |------------- PUBLIC METHOD'S FROM  CLASS RECTANGLE ----------------|
+    # |-------------------- set and get *width* Attribute -----------------|
     @property
     def width(self):
         return (self.__width)
@@ -142,9 +165,10 @@ class Rectangle(Base):
     def width(self, value):
         self.integer_validator("width", value)
         self.__width = value
-    # |-------------------------- END OF FUNCTION ------------------------|
+    # |-------------------------- END OF FUNCTION -------------------------|
 
-    # set and get *height* Attribute -------------------------------------|
+    # |------------- PUBLIC METHOD'S FROM  CLASS RECTANGLE ----------------|
+    # |------------------ set and get *height* Attribute ------------------|
     @property
     def height(self):
         return (self.__height)
@@ -153,9 +177,10 @@ class Rectangle(Base):
     def height(self, value):
         self.integer_validator("height", value)
         self.__height = value
-    # END OF FUNCTION ----------------------------------------------------|
+    # |-------------------------- END OF FUNCTION -------------------------|
 
-    # set and get *x* Attribute ------------------------------------------|
+    # |------------- PUBLIC METHOD'S FROM  CLASS RECTANGLE ----------------|
+    # |--------------------- set and get *x* Attribute --------------------|
     @property
     def x(self):
         return (self.__x)
@@ -164,9 +189,10 @@ class Rectangle(Base):
     def x(self, value):
         self.integer_validator("x", value)
         self.__x = value
-    # END OF FUNCTION ----------------------------------------------------|
+    # |-------------------------- END OF FUNCTION -------------------------|
 
-    # set and get *y* Attribute ------------------------------------------|
+    # |------------- PUBLIC METHOD'S FROM  CLASS RECTANGLE ----------------|
+    # |--------------------- set and get *y* Attribute --------------------|
     @property
     def y(self):
         return (self.__y)
@@ -175,4 +201,4 @@ class Rectangle(Base):
     def y(self, value):
         self.integer_validator("y", value)
         self.__y = value
-    # END OF FUNCTION ----------------------------------------------------|
+    # |-------------------------- END OF FUNCTION -------------------------|
