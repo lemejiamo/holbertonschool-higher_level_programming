@@ -6,11 +6,11 @@ from models.base import Base
 class Rectangle(Base):
     """ Rectangle class inherits from class Base """
 
-    # |---------------- Attributes from Rectangle Class -------------------|
+    # |---------------- ATTRIBUTES FROM RECTANGLE CLASS -------------------|
 
     print_symbol = '#'
 
-    # |-------------- Private Method from  class Rectangle ----------------|
+    # |-------------- PRIVATE METHOD FROM  CLASS RECTANGLE ----------------|
     # | --------------------------- CONSTRUCTOR ---------------------------|
     def __init__(self, width, height, x=0, y=0, id=None):
         """
@@ -26,13 +26,15 @@ class Rectangle(Base):
         super().__init__(id)
         self.width: int = width
         self.height: int = height
-        self.x = x
-        self.y = y
+        self.x: int = x
+        self.y: int = y
     # |------------------------ END OF CONSTRUCTOR ------------------------|
 
-    # |-------------- Private Method from  class Rectangle ----------------|
-    # |--------------------- Override __str__ method ----------------------|
+    # |-------------- PRIVATE METHOD FROM  CLASS RECTANGLE ----------------|
+    # |--------------------- OVERRIDE __STR__ METHOD ----------------------|
     def __str__(self):
+        """ Print the string representation of instance """
+
         return ("[{}] ({}) {}/{} - {}/{}".format(
                 __class__.__name__,
                 self.id,
@@ -42,10 +44,15 @@ class Rectangle(Base):
                 self.height))
     # |------------------------- END OF FUNCTION --------------------------|
 
-    # |------------- PUBLIC METHOD'S FROM  CLASS RECTANGLE ----------------|
-    # |------------------- Function to validate input data ----------------|
+    # |-------------- PUBLIC METHOD'S FROM  CLASS RECTANGLE ---------------|
+    # |----------------- FUNCTION TO VALIDATE INPUT DATA ------------------|
     def integer_validator(self, name, value):
-        """ validation of a integer """
+        """ Validation of a integer
+
+            Attributes:
+            name (str): name from attribute to analice
+            valur (int): value of attribute
+        """
 
         if type(value) is not int:
             raise TypeError("{} must be an integer".format(name))
@@ -56,17 +63,17 @@ class Rectangle(Base):
     # |------------------------- END OF FUNCTION --------------------------|
 
     # |------------- PUBLIC METHOD'S FROM  CLASS RECTANGLE ----------------|
-    # |------------------ Function to calculate the area ------------------|
+    # |------------------ FUNCTION TO CALCULATE THE AREA ------------------|
     def area(self):
-        """ calculates a area """
+        """ Calculates a area """
 
         return self.width * self.height
     # |-------------------------- END OF FUNCTION -------------------------|
 
     # |------------- PUBLIC METHOD'S FROM  CLASS RECTANGLE ----------------|
-    # |------------------- Function to display Rectangle ------------------|
+    # |------------------- FUNCTION TO DISPLAY RECTANGLE ------------------|
     def display(self):
-        """ print a rectangle with # """
+        """ Print a rectangle with # """
 
         rectangle = ""
         if (self.height == 0 or self.width == 0):
@@ -94,7 +101,13 @@ class Rectangle(Base):
     # |------------- PUBLIC METHOD'S FROM  CLASS RECTANGLE ----------------|
     # |---------------------- UPDATE RECTANGLE values ---------------------|
     def update(self, *args, **kwargs):
-        """ pendiente la descripcion XD"""
+        """ Update instance with the given data
+
+            Attributes:
+            *args (list): list of values to update
+            **kwargs (dict): dict of values to update,
+            dont works if *args is passed
+        """
 
         fields = ["size", "height", "width", "x", "y", "id"]
 
@@ -136,8 +149,10 @@ class Rectangle(Base):
     # |-------------------------- END OF FUNCTION -------------------------|
 
     # |------------- PUBLIC METHOD'S FROM  CLASS RECTANGLE ----------------|
-    # |--------------------------- print dictionary -----------------------|
+    # |--------------------------- TO_DICTIONARY --------------------------|
     def to_dictionary(self):
+        """ Print dictionary representation of a instance """
+
         if (type(self) == Rectangle):
             rectangle_dict = {
                 'x': self.x,
@@ -159,10 +174,14 @@ class Rectangle(Base):
     # |-------------------- set and get *width* Attribute -----------------|
     @property
     def width(self):
+        """Getter of the Rectangle width value"""
+
         return (self.__width)
 
     @width.setter
     def width(self, value):
+        """Setter of the Rectangle width value"""
+
         self.integer_validator("width", value)
         self.__width = value
     # |-------------------------- END OF FUNCTION -------------------------|
@@ -171,10 +190,14 @@ class Rectangle(Base):
     # |------------------ set and get *height* Attribute ------------------|
     @property
     def height(self):
+        """Getter of the Rectangle height value"""
+
         return (self.__height)
 
     @height.setter
     def height(self, value):
+        """Setter of the Rectangle height value"""
+
         self.integer_validator("height", value)
         self.__height = value
     # |-------------------------- END OF FUNCTION -------------------------|
@@ -183,10 +206,14 @@ class Rectangle(Base):
     # |--------------------- set and get *x* Attribute --------------------|
     @property
     def x(self):
+        """Getter of the instance 'X' value"""
+
         return (self.__x)
 
     @x.setter
     def x(self, value):
+        """Setter of the instance 'X' value"""
+
         self.integer_validator("x", value)
         self.__x = value
     # |-------------------------- END OF FUNCTION -------------------------|
@@ -195,10 +222,14 @@ class Rectangle(Base):
     # |--------------------- set and get *y* Attribute --------------------|
     @property
     def y(self):
+        """Getter of the instance 'Y' value"""
+
         return (self.__y)
 
     @y.setter
     def y(self, value):
+        """Setter of the instance 'Y' value"""
+
         self.integer_validator("y", value)
         self.__y = value
     # |-------------------------- END OF FUNCTION -------------------------|
