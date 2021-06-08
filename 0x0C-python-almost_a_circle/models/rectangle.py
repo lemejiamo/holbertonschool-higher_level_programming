@@ -5,7 +5,6 @@ from models.base import Base
 
 class Rectangle(Base):
     """ Rectangle class inherits from class Base """
-
     # |---------------- ATTRIBUTES FROM RECTANGLE CLASS -------------------|
 
     print_symbol = '#'
@@ -24,10 +23,10 @@ class Rectangle(Base):
             y (integer)
         """
         super().__init__(id)
-        self.width: int = width
-        self.height: int = height
-        self.x: int = x
-        self.y: int = y
+        self.width = width
+        self.height = height
+        self.x = x
+        self.y = y
     # |------------------------ END OF CONSTRUCTOR ------------------------|
 
     # |-------------- PRIVATE METHOD FROM  CLASS RECTANGLE ----------------|
