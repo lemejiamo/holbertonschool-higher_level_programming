@@ -35,7 +35,8 @@ class Square(Rectangle):
                 self.size))
     # |--------------------------- END OF __STR__ -------------------------|
 
-    # |------------------- setter and getter *SIZE* Attribute -------------|
+    # |------------------ PUBLIC Method from class Square  ----------------|
+    # |----------------- setter and getter *SIZE* Attribute ---------------|
     @property
     def size(self):
         return (self.__size)
