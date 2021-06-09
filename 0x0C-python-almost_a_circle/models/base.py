@@ -68,8 +68,11 @@ class Base():
 
         file = "{}.json".format(cls.__name__)
         list_dictionaries = []
-        for i in list_objs:
-            list_dictionaries.append(cls.to_dictionary(i))
+        if list_objs == [] or  list_objs is None:
+            string = cls.to_json_string(list_dictionaries)
+        else:
+            for i in list_objs:
+                list_dictionaries.append(cls.to_dictionary(i))
 
         with open(file, 'w') as file:
             string = cls.to_json_string(list_dictionaries)
