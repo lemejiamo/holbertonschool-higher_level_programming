@@ -68,7 +68,7 @@ class Base():
 
         file = "{}.json".format(cls.__name__)
         list_dictionaries = []
-        if list_objs == [] or list_objs is None:
+        if list_objs == [] or  list_objs is None:
             string = cls.to_json_string(list_dictionaries)
         else:
             for i in list_objs:
@@ -113,8 +113,8 @@ class Base():
                 for obj in data:
                     obj_list.append(cls.create(**obj))
                 return obj_list
-        except Exception as e:
-            return list_objs
+        except:
+            return []
     # |-------------------------- END OF FUNCTION -------------------------|
 
     # |------------------ CLASS METHOD'S FROM  CLASS BASE -----------------|
@@ -157,21 +157,19 @@ class Base():
 
         list_objs = []
         Headers = []
-        try:
-            with open(file, 'r', newline='') as file:
-                from_csv = csv.reader(file)
-                count = 0
-                for row in from_csv:
-                    if count == 0:
-                        Headers = row
-                        count += 1
-                    else:
-                        dict = {}
-                        for i in range(len(row)):
-                            dict[Headers[i]] = int(row[i])
-                        list_objs.append(cls.create(**dict))
 
-                return list_objs
-        except Exception as e:
+        with open(file, 'r', newline='') as file:
+            from_csv = csv.reader(file)
+            count = 0
+            for row in from_csv:
+                if count == 0:
+                    Headers = row
+                    count += 1
+                else:
+                    dict = {}
+                    for i in range(len(row)):
+                        dict[Headers[i]] = int(row[i])
+                    list_objs.append(cls.create(**dict))
+
             return list_objs
     # |-------------------------- END OF FUNCTION -------------------------|
