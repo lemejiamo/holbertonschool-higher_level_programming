@@ -157,7 +157,6 @@ class Base():
 
         list_objs = []
         Headers = []
-
         with open(file, 'r', newline='') as file:
             from_csv = csv.reader(file)
             count = 0
@@ -169,7 +168,7 @@ class Base():
                     dict = {}
                     for i in range(len(row)):
                         dict[Headers[i]] = int(row[i])
-                        list_objs.append(cls.create(**dict))
+                    list_objs.append(cls.create(**dict))
             return list_objs
 
     # |-------------------------- END OF FUNCTION -------------------------|
