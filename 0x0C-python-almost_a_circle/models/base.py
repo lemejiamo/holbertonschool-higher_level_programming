@@ -40,7 +40,7 @@ class Base():
         """ convert a dictionary to JSON string"""
 
         empty = list()
-        if list_dictionaries == []:
+        if list_dictionaries == []  or list_dictionaries is None:
             return empty
         return json.dumps(list_dictionaries)
     # |-------------------------- END OF FUNCTION -------------------------|
@@ -52,7 +52,7 @@ class Base():
         """ return a JSON string"""
 
         empty = list()
-        if json_string == []:
+        if list_dictionaries == []  or list_dictionaries is None:
             return empty
         return json.loads(json_string)
     # |-------------------------- END OF FUNCTION -------------------------|
@@ -104,6 +104,7 @@ class Base():
 
         file = "{}.json".format(cls.__name__)
         obj_list = []
+        empty_list = []
         try:
             with open(file, 'r') as open_file:
                 data = json.load(open_file)
@@ -112,7 +113,7 @@ class Base():
                     obj_list.append(cls.create(**obj))
                 return obj_list
         except:
-            return empty_list()
+            return empty_list
     # |-------------------------- END OF FUNCTION -------------------------|
 
     # |------------------ CLASS METHOD'S FROM  CLASS BASE -----------------|
