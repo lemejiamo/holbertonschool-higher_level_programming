@@ -111,7 +111,7 @@ class Rectangle(Base):
 
         fields = ["size", "height", "width", "x", "y", "id"]
 
-        if len(args) != 0:
+        if len(args) != 0 and len(args) > 0:
             # entry point to *args ----------------------------------------|
             if len(args) >= 1:
                 super().__init__(args[0])
