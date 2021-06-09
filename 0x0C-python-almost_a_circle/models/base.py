@@ -171,6 +171,6 @@ class Base():
                             dict[Headers[i]] = int(row[i])
                         list_objs.append(cls.create(**dict))
             return list_objs
-        except:
+        except IOError:
             return []
         # |-------------------------- END OF FUNCTION -------------------------|
