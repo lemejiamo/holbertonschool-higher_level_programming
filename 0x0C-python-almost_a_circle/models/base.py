@@ -106,7 +106,6 @@ class Base():
 
         file = "{}.json".format(cls.__name__)
         obj_list = []
-        empty_list = []
         try:
             with open(file, 'r') as open_file:
                 data = json.load(open_file)
@@ -115,7 +114,7 @@ class Base():
                     obj_list.append(cls.create(**obj))
                 return obj_list
         except:
-            return empty_list
+            return []
     # |-------------------------- END OF FUNCTION -------------------------|
 
     # |------------------ CLASS METHOD'S FROM  CLASS BASE -----------------|
