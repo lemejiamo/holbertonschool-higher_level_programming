@@ -39,9 +39,8 @@ class Base():
     def to_json_string(list_dictionaries):
         """ convert a dictionary to JSON string"""
 
-        empty = list()
-        if list_dictionaries == []  or list_dictionaries is None:
-            return empty
+        if list_dictionaries is None or list_dictionaries == []:
+            return "[]"
         return json.dumps(list_dictionaries)
     # |-------------------------- END OF FUNCTION -------------------------|
 
@@ -51,9 +50,8 @@ class Base():
     def from_json_string(json_string):
         """ return a JSON string"""
 
-        empty = list()
         if list_dictionaries == []  or list_dictionaries is None:
-            return empty
+            return "[]"
         return json.loads(json_string)
     # |-------------------------- END OF FUNCTION -------------------------|
 
