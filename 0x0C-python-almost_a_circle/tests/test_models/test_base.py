@@ -1,33 +1,20 @@
 #!/usr/bin/python3
-""" Test module for storing Base class test cases. """
+""" Test module for base.py """
 import unittest
 from models.base import Base
 from models.rectangle import Rectangle
 from models.square import Square
 from unittest.mock import patch
 from io import StringIO
-from time import sleep
 import os
-print_on = 0  # <-- Set to 1 to activate printing of the tests.
 
 
 class TestBase(unittest.TestCase):
-    """ TestBase class for storing the unittest methods and cases. """
-    if print_on == 1:
-        green = "\033[92m"  # <-- Stores the green text color format.
-        reset = "\033[0m"  # <-- Stores the reset text color format.
-        print(green + "." + "~ " * 11 + "~| test_base.py module. | " +
-              "~ " * 11 + reset)
-        sleep(1)
+    """ TestBase  for test class Base. """
 
-    # Tests from 0-main.py----------------------------------------------------|
     def test_0_Base(self):
         """ Tests the cases for the Base class from 0-main.py """
-        if print_on == 1:
-            green = "\033[92m"
-            reset = "\033[0m"
-            print(green + '.' + "~" * 20 + " Testing cases from 0-main.py " +
-                  "~" * 19 + reset)
+
         b1 = Base()
         self.assertEqual(b1.id, 1)
         b2 = Base()
@@ -39,15 +26,8 @@ class TestBase(unittest.TestCase):
         b5 = Base()
         self.assertEqual(b5.id, 4)
 
-    # Tests from 14-main.py---------------------------------------------------|
     def test_14_Base(self):
         """ Tests the cases for the Base class from 14-main.py """
-        if print_on == 1:
-            green = "\033[92m"
-            reset = "\033[0m"
-            print(green + '.' + "~" * 20 + " Testing cases from 14-main.py " +
-                  "~" * 19 + reset)
-
         r1 = Rectangle(10, 7, 2, 8)
         dictionary = r1.to_dictionary()
         json_string = Base.to_json_string(sorted(dictionary.items()))
@@ -56,15 +36,12 @@ class TestBase(unittest.TestCase):
         self.assertEqual(type(dictionary), dict)
         self.assertEqual(type(json_string), str)
 
-        # Testing None case.
         empty = Base.to_json_string(None)
         self.assertEqual(empty, "[]")
 
-        # Testing empty case.
         empty = Base.to_json_string([])
         self.assertEqual(empty, "[]")
 
-    # Tests from 15-main.py---------------------------------------------------|
     def test_15_Base(self):
         """ Tests the cases for the Base class from 15-main.py """
         if print_on == 1:
@@ -91,7 +68,6 @@ class TestBase(unittest.TestCase):
         with open("Rectangle.json", "r") as file:
             self.assertEqual(file.read(), "[]")
 
-    # Tests from 16-main.py---------------------------------------------------|
     def test_16_Base(self):
         """ Tests the cases for the Base class from 16-main.py """
         if print_on == 1:
@@ -118,7 +94,6 @@ class TestBase(unittest.TestCase):
         list_output = Rectangle.from_json_string(json_string)
         self.assertEqual(list_output, [])
 
-    # Tests from 17-main.py---------------------------------------------------|
     def test_17_Base(self):
         """ Tests the cases for the Base class from 17-main.py """
         if print_on == 1:
@@ -143,7 +118,6 @@ class TestBase(unittest.TestCase):
         self.assertFalse(r1 is r2)
         self.assertFalse(r1 == r2)
 
-    # Tests from 18-main.py---------------------------------------------------|
     def test_18_Base(self):
         """ Tests the cases for the Base class from 18-main.py """
         if print_on == 1:
@@ -200,14 +174,8 @@ class TestBase(unittest.TestCase):
 
         self.assertFalse(s2 == list_squares_output[1])
 
-    # Tests from 100-main.py--------------------------------------------------|
     def test_100_Base(self):
         """ Tests the cases for the Base class from 100-main.py """
-        if print_on == 1:
-            green = "\033[92m"
-            reset = "\033[0m"
-            print(green + '.' + "~" * 20 + " Testing cases from 100-main.py " +
-                  "~" * 19 + reset)
 
         list_rectangles_output = Rectangle.load_from_file_csv()
         self.assertEqual(list_rectangles_output, [])
@@ -268,91 +236,6 @@ class TestBase(unittest.TestCase):
         self.assertIsInstance(b1, Base)
         self.assertTrue(type(b1) == Base)
 
-    # Tests requirements.
-    def test_requirements(self):
-        """ Test for the requirements of the project."""
-
-        # Tests if README exists on current path.
-        current_path = os.getcwd()
-        concat = current_path + '/README.md'
-        self.assertTrue(os.path.exists(concat))
-
-        # Test pep8
-        case = '\n'
-        with patch('sys.stdout', new=StringIO()) as fake_out:
-            with os.popen("pep8 models/base.py") as cmd:
-                print(cmd.read())
-            self.assertEqual(fake_out.getvalue(), case)
-        with patch('sys.stdout', new=StringIO()) as fake_out:
-            with os.popen("pep8 models/rectangle.py") as cmd:
-                print(cmd.read())
-            self.assertEqual(fake_out.getvalue(), case)
-        with patch('sys.stdout', new=StringIO()) as fake_out:
-            with os.popen("pep8 models/square.py") as cmd:
-                print(cmd.read())
-            self.assertEqual(fake_out.getvalue(), case)
-
-        with patch('sys.stdout', new=StringIO()) as fake_out:
-            with os.popen("pep8 tests/test_models/test_base.py") as cmd:
-                print(cmd.read())
-            self.assertEqual(fake_out.getvalue(), case)
-        with patch('sys.stdout', new=StringIO()) as fake_out:
-            with os.popen("pep8 tests/test_models/test_rectangle.py") as cmd:
-                print(cmd.read())
-            self.assertEqual(fake_out.getvalue(), case)
-        with patch('sys.stdout', new=StringIO()) as fake_out:
-            with os.popen("pep8 tests/test_models/test_square.py") as cmd:
-                print(cmd.read())
-            self.assertEqual(fake_out.getvalue(), case)
-
-        # Test newline at the end of the file.
-        with os.popen('cat -e models/base.py | tail -1') as cmd:
-            new_line = cmd.read()
-            self.assertEqual(new_line[-1], '\n')
-        with os.popen('cat -e models/rectangle.py | tail -1') as cmd:
-            new_line = cmd.read()
-            self.assertEqual(new_line[-1], '\n')
-        with os.popen('cat -e models/square.py | tail -1') as cmd:
-            new_line = cmd.read()
-            self.assertEqual(new_line[-1], '\n')
-
-        cmd_s = 'cat -e tests/test_models/test_base.py | tail -1'
-        with os.popen(cmd_s) as cmd:
-            new_line = cmd.read()
-            self.assertEqual(new_line[-1], '\n')
-        cmd_s = 'cat -e tests/test_models/test_rectangle.py | tail -1'
-        with os.popen('cat -e models/square.py | tail -1') as cmd:
-            new_line = cmd.read()
-            self.assertEqual(new_line[-1], '\n')
-        cmd_s = 'cat -e tests/test_models/test_square.py | tail -1'
-        with os.popen('cat -e models/square.py | tail -1') as cmd:
-            new_line = cmd.read()
-            self.assertEqual(new_line[-1], '\n')
-
-        # Test shebang at the start of the file.
-        shebang = '#!/usr/bin/python3\n'
-        with os.popen('cat models/base.py | head -1') as cmd:
-            line_1 = cmd.read()
-            self.assertEqual(line_1, shebang)
-        with os.popen('cat models/rectangle.py | head -1') as cmd:
-            line_1 = cmd.read()
-            self.assertEqual(line_1, shebang)
-        with os.popen('cat models/square.py | head -1') as cmd:
-            line_1 = cmd.read()
-            self.assertEqual(line_1, shebang)
-
-        cmd_s = 'cat tests/test_models/test_base.py | head -1'
-        with os.popen(cmd_s) as cmd:
-            line_1 = cmd.read()
-            self.assertEqual(line_1, shebang)
-        cmd_s = 'cat tests/test_models/test_rectangle.py | head -1'
-        with os.popen('cat  models/square.py | head -1') as cmd:
-            line_1 = cmd.read()
-            self.assertEqual(line_1, shebang)
-        cmd_s = 'cat tests/test_models/test_square.py | head -1'
-        with os.popen('cat models/square.py | head -1') as cmd:
-            line_1 = cmd.read()
-            self.assertEqual(line_1, shebang)
 
     # Test from Wiston.
     def test_Wis(self):
