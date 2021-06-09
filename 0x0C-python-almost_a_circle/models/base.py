@@ -50,7 +50,7 @@ class Base():
     def from_json_string(json_string):
         """ return a JSON string"""
 
-        if list_dictionaries == []  or list_dictionaries is None:
+        if list_dictionaries == [] or list_dictionaries is None:
             return "[]"
         return json.loads(json_string)
     # |-------------------------- END OF FUNCTION -------------------------|
@@ -72,7 +72,8 @@ class Base():
             list_dictionaries.append(cls.to_dictionary(i))
 
         with open(file, 'w') as file:
-            file.write(json.dumps(list_dictionaries))
+            string = cls.to_json_string(list_dictionaries)
+            file.write(string)
     # |-------------------------- END OF FUNCTION -------------------------|
 
     # |------------------------------ CREATE ------------------------------|
