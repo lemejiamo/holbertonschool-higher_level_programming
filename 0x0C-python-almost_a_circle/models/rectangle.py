@@ -52,13 +52,12 @@ class Rectangle(Base):
             name (str): name from attribute to analice
             valur (int): value of attribute
         """
-
         if type(value) is not int:
             raise TypeError("{} must be an integer".format(name))
-        if value == 0 and name == "y" or name == "x":
+        if value == 0 and (name == "y" or name == "x"):
             return
         if value <= 0:
-            if name == "y" or name == "x":
+            if (name == "y" or name == "x"):
                 raise ValueError("{} must be >= 0".format(name))
             raise ValueError("{} must be > 0".format(name))
     # |------------------------- END OF FUNCTION --------------------------|
