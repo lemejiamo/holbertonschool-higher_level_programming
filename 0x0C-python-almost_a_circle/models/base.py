@@ -50,7 +50,7 @@ class Base():
     def from_json_string(json_string):
         """ return a JSON string"""
 
-        if list_dictionaries == [] or list_dictionaries is None:
+        if json_string == [] or json_string is None:
             return "[]"
         return json.loads(json_string)
     # |-------------------------- END OF FUNCTION -------------------------|
