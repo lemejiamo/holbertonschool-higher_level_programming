@@ -157,19 +157,20 @@ class Base():
 
         list_objs = []
         Headers = []
-
-        with open(file, 'r', newline='') as file:
-            from_csv = csv.reader(file)
-            count = 0
-            for row in from_csv:
-                if count == 0:
-                    Headers = row
-                    count += 1
-                else:
-                    dict = {}
-                    for i in range(len(row)):
-                        dict[Headers[i]] = int(row[i])
-                    list_objs.append(cls.create(**dict))
-
+        try:
+            with open(file, 'r', newline='') as file:
+                from_csv = csv.reader(file)
+                count = 0
+                for row in from_csv:
+                    if count == 0:
+                        Headers = row
+                        count += 1
+                    else:
+                        dict = {}
+                        for i in range(len(row)):
+                            dict[Headers[i]] = int(row[i])
+                        list_objs.append(cls.create(**dict))
             return list_objs
-    # |-------------------------- END OF FUNCTION -------------------------|
+        except:
+            return []
+        # |-------------------------- END OF FUNCTION -------------------------|
