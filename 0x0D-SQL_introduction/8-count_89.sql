@@ -1,2 +1,2 @@
 -- show records with id= 89
-select * from first_table where id=89;
+SELECT COUNT(*) FROM first_table WHERE id=89;
