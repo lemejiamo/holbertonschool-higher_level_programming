@@ -13,7 +13,8 @@ if __name__ == "__main__":
                                passwd=password,
                                db=database_name)
     cursor = database.cursor()
-    cursor.execute("SELECT states.id, FROM states BY states.id ASC;")
+    cursor.execute("SELECT states.id, name FROM states ORDER BY states.id ASC;")
+
     rows = cursor.fetchall()
 
     for row in rows:
