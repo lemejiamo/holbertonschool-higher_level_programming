@@ -13,14 +13,13 @@ if __name__ == "__main__":
                                user=username,
                                passwd=password,
                                db=database_name)
-    cursor = database.cursor()
-    cursor.execute("SELECT states.id, name FROM states ORDER BY states.id ASC;")
+    line = database.cursor()
+    line.execute("SELECT states.id, name FROM states ORDER BY states.id ASC;")
 
-    rows = cursor.fetchall()
+    rows = line.fetchall()
 
     for row in rows:
         print(row)
 
-    cursor.close()
+    line.close()
     database.close()
-
