@@ -17,19 +17,20 @@ if __name__ == "__main__":
 	cursor = database.cursor()
 
 	cursor.execute("""
-		SELECT states.id new_table.name
-		JOIN states AS new_table
-		ON cities.id=new_table.id
-		where new_table.name = %(state)s
-		ORDER BY new_table.name ASC;
+		SELECT ct.name FROM cities AS ct
+		JOIN states AS st
+		ON ct.state_id=st.id
+		where st.name = %(state)s
+		ORDER BY ct.id;
 	""", {
 		'state': state
 	})
 
 	rows = cursor.fetchall()
-
+	line = ""
 	for row in rows:
-	   print(row)
-
+	   line = line + row[0] + ', '
+	
+	print(line[0:-2])
 	cursor.close()
 	database.close()
