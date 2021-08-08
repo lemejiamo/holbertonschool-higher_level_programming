@@ -9,7 +9,7 @@ Base = declarative_base()
 
 class State(Base):
     """ Class for states table"""
-    
+
     __tablename__ = 'states'
     id = Column(Integer, autoincrement=True,
                 unique=True, primary_key=True, nullable=False)
