@@ -15,12 +15,13 @@ if __name__ == "__main__":
                                passwd=password,
                                db=database_name)
 
-    query_1 = " SELECT states.id, name FROM states where name = '"
-    query_2 = "' ORDER BY states.id ASC;"
-    query_def = query_1 + state + query_2
+    query = """
+    SELECT states.id, name FROM states where name = '{:s}'
+    ORDER BY states.id ASC;
+    """.format(state)
 
     cursor = database.cursor()
-    cursor.execute(query_def)
+    cursor.execute(query)
     rows = cursor.fetchall()
 
     for row in rows:
