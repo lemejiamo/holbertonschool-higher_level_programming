@@ -21,7 +21,7 @@ if __name__ == "__main__":
     new_name = "New Mexico"
 
     updated = session.query(State).filter(State.id == updated_id)
-    
+
     for update in updated:
         update.name = new_name
 
