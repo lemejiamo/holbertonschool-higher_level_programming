@@ -1,4 +1,4 @@
 #!/bin/bash
-# Displays the body of the response
+# Displays the body of the request url
 
-curl -L "$1"
+curl -sL -X GET "$1"
