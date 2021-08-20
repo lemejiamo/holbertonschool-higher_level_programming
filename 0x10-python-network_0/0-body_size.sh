@@ -1,5 +1,5 @@
 #!/bin/bash
 # Display the size of the body of the response
 
-REQUESTTO=$1
-curl -sI "$REQUESTTO" | awk '/Content-Length/ {print $2}'
+REQUEST_TO=$1
+curl -sI "$REQUEST_TO" | awk '/Content-Length/ {print $2}'
