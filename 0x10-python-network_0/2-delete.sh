@@ -1,4 +1,4 @@
 #!/bin/bash
 #sends  DELETE request
 
-curl -sL -X DELETE $1
+curl -s -X DELETE "$1"
