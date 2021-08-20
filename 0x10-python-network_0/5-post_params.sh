@@ -1,3 +1,3 @@
 #!/bin/bash
-#show parameters
-curl -s $1 -X POST -d "email=hr@holbertonshool.com&subject=I will always be here for PLD"
+#show params
+curl -s $1 -X POST -d "email=hr@holbertonschool.com&subject=I will always be here for PLD"
